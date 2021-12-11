@@ -27,7 +27,8 @@ namespace DataCollector.Controllers
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public void Put1(int id)
         {
         }
 
