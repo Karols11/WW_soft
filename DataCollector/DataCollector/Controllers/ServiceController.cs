@@ -14,17 +14,22 @@ namespace DataCollector.Controllers
             return Ok("asd");
         }
         [HttpPost]
-        //[Route("Index")]
-        public int Index()
+        public bool AddItem(string Name)
         {
-            return 55;
-        }
+            DAL.Contexts.GenericContext<DAL.Models.KlasaK1> context = new DAL.Contexts.GenericContext<DAL.Models.KlasaK1>();
+            return context.Add(new DAL.Models.KlasaK1 { Name = Name });   
+       }
         [HttpPost]
-        //[Route("Test123")]
         public IHttpActionResult  Test123(string pierwszy, string asd)
         {
             var a = new { Amount = pierwszy, Message = asd };
             return Ok(a);
+        }
+        
+        public DAL.Models.KlasaK1 GetItem(int nrid)
+        {
+            DAL.Contexts.GenericContext<DAL.Models.KlasaK1> context = new DAL.Contexts.GenericContext<DAL.Models.KlasaK1>();
+            return context.GetItemById(nrid);
         }
     }
 }
